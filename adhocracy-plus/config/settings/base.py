@@ -20,7 +20,8 @@ APLUS_MANUAL_URL = ""
 
 # Application definition
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'https://adhocracy-plus-1kge.onrender.com').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'adhocracy-plus-1kge.onrender.com').split(',')
+
 
 
 INSTALLED_APPS = (
