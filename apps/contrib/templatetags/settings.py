@@ -7,5 +7,3 @@ register = template.Library()
 @register.simple_tag
 def settings_value(name):
     return getattr(settings, name, "")
-
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'adhocracy-plus-1kge.onrender.com').split(',')
