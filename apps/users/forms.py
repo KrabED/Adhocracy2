@@ -50,7 +50,7 @@ class DefaultSignupForm(SignupForm):
         ),
         required=False,
     )
-    captcha = CaptcheckCaptchaField(label=_("I am not a robot"))
+    captcha = CaptchaField(label=_("I am not a robot"))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -71,6 +71,18 @@ class DefaultSignupForm(SignupForm):
             self.fields["captcha"].help_text = helpers.add_email_link_to_helptext(
                 self.fields["captcha"].help_text, CAPTCHA_HELP
             )
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if get_user_model().objects.filter(username=username).exists():
+            raise ValidationError(_('A user with this username already exists.'))
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if get_user_model().objects.filter(email=email).exists():
+            raise ValidationError(_('A user with this email already exists.'))
+        return email
 
     def save(self, request):
         user = super().save(request)
