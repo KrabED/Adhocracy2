@@ -48,7 +48,7 @@ class DefaultSignupForm(SignupForm):
         ),
         required=False,
     )
-    captcha = CaptchaField(label=_("I am not a robot"))
+    captcha = CaptcheckCaptchaField(label=_("I am not a robot"))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
