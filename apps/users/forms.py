@@ -11,6 +11,10 @@ from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 from zeep import Client
 
+from django import forms
+from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+
 from apps.captcha.fields import CaptcheckCaptchaField
 from apps.cms.settings import helpers
 from apps.organisations.models import Member
