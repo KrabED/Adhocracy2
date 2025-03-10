@@ -29,10 +29,12 @@ class CollectPhase(phases.PhaseContent):
     name = _("Collect phase")
     description = _("Create and comment on new ideas.")
     module_name = _("ideas collection")
+    
 
     features = {
         "crud": (models.Idea,),
         "comment": (models.Idea,),
+        "rate": (models.Idea,),
     }
 
 
