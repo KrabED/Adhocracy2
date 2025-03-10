@@ -20,7 +20,7 @@ from apps.moderatorfeedback.forms import ModeratorFeedbackForm
 from apps.moderatorfeedback.models import ModeratorFeedback
 from apps.notifications.emails import NotifyCreatorOnModeratorFeedback
 from apps.organisations.mixins import UserFormViewMixin
-from adhocracy4.ratings.api import RatingViewSet
+
 
 from . import forms
 from . import models
