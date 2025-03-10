@@ -78,7 +78,6 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 8	auth	0006_require_contenttypes_0002	2019-10-24 15:09:40.930942+02
 9	auth	0007_alter_validators_add_error_messages	2019-10-24 15:09:40.976488+02
 10	auth	0008_alter_user_username_max_length	2019-10-24 15:09:40.993653+02
-11	auth	0009_alter_user_last_name_max_length	2019-10-24 15:09:41.045936+02
 12	auth	0010_alter_group_name_max_length	2019-10-24 15:09:41.069723+02
 13	auth	0011_update_proxy_permissions	2019-10-24 15:09:41.116061+02
 14	a4_candy_users	0001_initial	2019-10-24 15:09:41.206338+02
