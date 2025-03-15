@@ -102,57 +102,7 @@
             </div>
         </div>
         {% include "a4modules/includes/module_description.html" %}
-        {% block phase_info %}
-            {% if module.phases.first.type != 'a4_candy_interactive_events:issue' %}
-                {% if not module.active_phase %}
-                <div class="row">
-                    <div class="col-md-8 offset-md-2 mb-3">
-                        <strong>
-                            {% translate 'Participation is not possible at the moment.' %}
-                            {% if not module.past_phases %}
-                                {% html_date module.future_phases.first.start_date 'DATETIME_FORMAT' as start_date %}
-                                {% blocktranslate with date=start_date %}It starts on {{ date }}.{% endblocktranslate%}
-                            {% elif module.future_phases %}
-                                {% html_date module.future_phases.first.start_date 'DATETIME_FORMAT' as start_date %}
-                                {% blocktranslate with date=start_date %}It continues on {{ date }}.{% endblocktranslate%}
-                            {% else %}
-                                {% html_date module.past_phases.last.end_date 'DATETIME_FORMAT' as end_date %}
-                                {% blocktranslate with date=end_date %}It ended on {{ date }}.{% endblocktranslate%}
-                            {% endif %}
-                        </strong>
-                    </div>
-                </div>
-                {% endif %}
-                {% with phase_count=module.phases.count %}
-                <div class="row mb-4">
-                    <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-                        {% for phase in module.phases %}
-                            {% if phase.is_over or phase == module.active_phase %}
-                            <div class="phase-info__item {% if phase_count == 1 %} u-no-border {% endif %}">
-                                <div class="fw-bold{% if phase == module.active_phase %} lr-bar{% endif %}">
-                                    {% if phase == module.active_phase %}
-                                        <span class="lr-bar__left">{{ phase.name }}</span>
-                                        <span class="lr-bar__right text-primary">{% translate 'active' %}</span>
-                                    {% else %}
-                                        {{ phase.name }}
-                                    {% endif %}
-                                </div>
-                                <div class="phase-info__item__subtitle">
-                                    {% html_date phase.start_date 'DATETIME_FORMAT' %}
-                                    &ndash; {% html_date phase.end_date 'DATETIME_FORMAT' %}
-                                </div>
-                                <div class="phase-info__item__description">
-                                    {{ phase.description }}
-                                </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endwith %}
-            {% endif %}
-        {% endblock %}
-
+       
         {% if project.is_private %}
         <div class="row">
             <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2 u-font-size-xs mb-4">
