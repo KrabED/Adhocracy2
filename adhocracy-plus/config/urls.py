@@ -44,12 +44,20 @@ from apps.userdashboard.routers import ModerationDetailDefaultRouter
 from apps.users.api import UserViewSet
 from apps.users.decorators import user_is_project_admin
 from apps.users.views import set_language_overwrite
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='anseo/projects/suggest-vote-discuss/', permanent=False)),
+    path('admin/', admin.site.urls),
+
+    # Homepage redirect FIRST
+    path('', RedirectView.as_view(url='/anseo/projects/suggest-vote-discuss/', permanent=False)),
+
+    # Wagtail routes AFTER
+    path('', include('wagtail.urls')),
 ]
+
 
 router = routers.DefaultRouter()
 router.register(r"follows", FollowViewSet, basename="follows")
