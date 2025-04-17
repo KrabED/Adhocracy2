@@ -48,16 +48,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-
-    # Homepage redirect FIRST
-    path('', RedirectView.as_view(url='/anseo/projects/suggest-vote-discuss/', permanent=False)),
-
-    # Wagtail routes AFTER
-    path('', include('wagtail.urls')),
-]
-
 
 router = routers.DefaultRouter()
 router.register(r"follows", FollowViewSet, basename="follows")
@@ -106,6 +96,7 @@ comment_router.register(
 
 urlpatterns = [
     # General platform urls
+    path('', RedirectView.as_view(url='/anseo/projects/suggest-vote-discuss/', permanent=False)),
     re_path(r"^django-admin/", admin.site.urls),
     path("admin/", include("wagtail.admin.urls")),
     path("documents/", include(wagtaildocs_urls)),
