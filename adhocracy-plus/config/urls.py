@@ -44,6 +44,12 @@ from apps.userdashboard.routers import ModerationDetailDefaultRouter
 from apps.users.api import UserViewSet
 from apps.users.decorators import user_is_project_admin
 from apps.users.views import set_language_overwrite
+from django.urls import path
+from django.views.generic.base import RedirectView
+
+urlpatterns = [
+    path('', RedirectView.as_view(url='anseo/projects/suggest-vote-discuss/', permanent=False)),
+]
 
 router = routers.DefaultRouter()
 router.register(r"follows", FollowViewSet, basename="follows")
